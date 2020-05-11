@@ -1,0 +1,5 @@
+Lucyna,Lakow,24-01-1973
+Radosław,Lakow,28-06-2019
+Zosia,Kowal,18-01-2007
+Anna,Kowal,14-12-1967
+Barosz,Kawon,14-08-2016
