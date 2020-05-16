@@ -14,6 +14,10 @@
                 <Setter Property="HorizontalAlignment" Value="Right" />
                 <Setter Property="Padding" Value="15" />
             </Style>
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Margin" Value="5,0,10,0"/>
+            </Style>
         </Grid.Resources>
         
         <Grid.RowDefinitions>
@@ -27,22 +31,57 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView Name="lvUsers" ItemsSource="{Binding Users}" Grid.Column="2" Grid.RowSpan="4"></ListView>
+        <ListView Name="lvUsers" 
+                  ItemsSource="{Binding Users}"
+                  Grid.Column="2" 
+                  Grid.RowSpan="4"
+                  SelectedItem="{Binding ChosenUser}"
+                  Margin="0,10,10,10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding FirstName}" FontSize="12"/>
+                        <Run Text="{Binding LastName}" FontSize="26"/>
+                        <LineBreak/>
+                        <Run Text="ur." FontSize="8"/>
+                        <Run Text="{Binding DateOfBirth, StringFormat=dd-MM-yyyy}" FontSize="8"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         
         <Label Name="chosenUser" Grid.Column="0"/>
 
         <TextBlock Text="First Name:" Grid.Row="0" />
-        <TextBox x:Name="tbFirstName" Grid.Row="0" Grid.Column="1" />
+        <TextBox x:Name="tbFirstName" Grid.Row="0" Grid.Column="1" Text="{Binding ChosenUser.FirstName}" />
 
         <TextBlock Text="Last Name:" Grid.Row="1"/>
-        <TextBox x:Name="tbLastName" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="tbLastName" Grid.Row="1" Grid.Column="1" Text="{Binding ChosenUser.LastName}"/>
 
-        <TextBlock Text="Age:" Grid.Row="2"/>
-        <TextBox x:Name="Age" Grid.Row="2" Grid.Column="1"/>
-
-        <Button x:Name="btnCreateUser" Command="{Binding AddRandomNewUser}" Grid.Row="3">
-            <TextBlock TextWrapping="Wrap" Text="Create random user"/>
-        </Button>
-        <Button x:Name="btnRemoveUser" Content="Remove user" Grid.Column="1" Grid.Row="3"/>
+        <TextBlock Text="Date of birth:" Grid.Row="2"/>
+        <TextBox x:Name="Age" Grid.Row="2" Grid.Column="1"  Text="{Binding ChosenUser.DateOfBirth, StringFormat=dd-MM-yyyy}" IsEnabled="False"/>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="btnCreateUser"
+                    Grid.Column="0" 
+                    Command="{Binding AddRandomNewUser}"
+                    Margin="10,10,5,10">
+                <TextBlock TextWrapping="Wrap" Text="Create random user"/>
+            </Button>
+            <Button x:Name="btnRemoveUser" 
+                    Content="Remove user"
+                    Margin="5,10"
+                    Grid.Column="1"
+                    Command="{Binding RemoveUser}"/>
+            <Button Grid.Column="2" 
+                    Margin="5,10,10,10" 
+                    Content="Save changes"
+                    Command="{Binding SaveChagnes}"/>
+        </Grid>
     </Grid>
 </Window>

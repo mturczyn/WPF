@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "BJkwfCzAd2ACnpJ6Hj3rz3ErnMAgmelf40sTGNcNJx2Ma2+LaDjDBMwA3hJoztyKCrktnQfsD4FJp+09vz8D9Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Mi\\Desktop\\GIT repos\\WPF\\MvvmTutorial\\MvvmTutorial\\MvvmTutorial.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mi\\.nuget\\packages\\commonservicelocator.netcore\\1.3.1\\commonservicelocator.netcore.1.3.1.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
+    "C:\\Users\\Mi\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\Mi\\.nuget\\packages\\unity.interception.netcore\\4.0.4\\unity.interception.netcore.4.0.4.nupkg.sha512",
+    "C:\\Users\\Mi\\.nuget\\packages\\unity.netcore\\4.0.3\\unity.netcore.4.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

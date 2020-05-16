@@ -21,6 +21,8 @@ namespace MvvmTutorial.ViewModels
         private DataManager _dataManager;
 
         private ICommand _addRandomNewUser;
+        private ICommand _removeUser;
+        private ICommand _saveChanges;
 
         public MyViewModel(DataManager dataManager)
         {
@@ -29,6 +31,7 @@ namespace MvvmTutorial.ViewModels
         }
 
         public ObservableCollection<User> Users { get; set; }
+        public User ChosenUser { get; set; }
         public ICommand AddRandomNewUser => _addRandomNewUser ?? (_addRandomNewUser = new ActionCommand(() =>
         {
             var date = new DateTime(
@@ -40,6 +43,16 @@ namespace MvvmTutorial.ViewModels
             _dataManager.SaveUsers();
             Users.Add(user);
         }));
-        
+        public ICommand RemoveUser => _removeUser ?? (_removeUser = new ActionCommand(() =>
+        {
+            if (ChosenUser == null) return;
+            _dataManager.Users.Remove(ChosenUser);
+            _dataManager.SaveUsers();
+            Users.Remove(ChosenUser);
+        }));
+        public ICommand SaveChagnes => _saveChanges ?? (_saveChanges = new ActionCommand(() =>
+        {
+            _dataManager.SaveUsers();
+        }));
     }
 }
