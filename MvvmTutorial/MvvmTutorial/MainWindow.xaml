@@ -1,12 +1,15 @@
-﻿<Window x:Class="MvvmTutorial.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MvvmTutorial"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        FontSize="20">
+﻿<Window
+    x:Class="MvvmTutorial.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MvvmTutorial"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    FontSize="20"
+    mc:Ignorable="d">
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBlock">
@@ -15,73 +18,162 @@
                 <Setter Property="Padding" Value="15" />
             </Style>
             <Style TargetType="{x:Type TextBox}">
-                <Setter Property="Height" Value="40"/>
-                <Setter Property="Margin" Value="5,0,10,0"/>
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Margin" Value="5,0,10,0" />
             </Style>
         </Grid.Resources>
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <ListView Name="lvUsers" 
-                  ItemsSource="{Binding Users}"
-                  Grid.Column="2" 
-                  Grid.RowSpan="4"
-                  SelectedItem="{Binding ChosenUser}"
-                  Margin="0,10,10,10">
+        <ListView
+            Name="lvUsers"
+            Grid.RowSpan="4"
+            Grid.Column="2"
+            Margin="0,10,10,10"
+            ItemsSource="{Binding Users}"
+            SelectedItem="{Binding ChosenUser}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
-                        <Run Text="{Binding FirstName}" FontSize="12"/>
-                        <Run Text="{Binding LastName}" FontSize="26"/>
-                        <LineBreak/>
-                        <Run Text="ur." FontSize="8"/>
-                        <Run Text="{Binding DateOfBirth, StringFormat=dd-MM-yyyy}" FontSize="8"/>
+                        <Run
+                            FontSize="12"
+                            Text="{Binding FirstName}" />
+                        <Run
+                            FontSize="26"
+                            Text="{Binding LastName}" />
+                        <LineBreak />
+                        <Run
+                            FontSize="8"
+                            Text="ur." />
+                        <Run
+                            FontSize="8"
+                            Text="{Binding DateOfBirth, StringFormat=dd-MM-yyyy}" />
                     </TextBlock>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Grid>
+                                    <Grid.Background>
+                                        <LinearGradientBrush>
+                                            <GradientStop x:Name="gradStop1" Color="LightYellow"/>
+                                            <GradientStop x:Name="gradStop2" Color="LightGreen" Offset=".8"/>
+                                        </LinearGradientBrush>
+                                    </Grid.Background>
+                                    <ContentPresenter />
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup Name="MouseStates">
+                                            <VisualState Name="MouseOver">
+                                                <Storyboard>
+                                                    <ColorAnimation
+                                                        Storyboard.TargetName="gradStop1"
+                                                        Storyboard.TargetProperty="Color"
+                                                        Duration="0:0:0.5"
+                                                        To="Yellow"/>
+                                                    <DoubleAnimation
+                                                        Storyboard.TargetName="gradStop2"
+                                                        Storyboard.TargetProperty="Offset"
+                                                        AutoReverse="True"
+                                                        To="1"
+                                                        Duration="0:0:0.5"/>
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState Name="Normal">
+                                                <Storyboard>
+                                                    <ColorAnimation
+                                                        Storyboard.TargetName="gradStop1"
+                                                        Storyboard.TargetProperty="Color"
+                                                        Duration="0:0:0.5"
+                                                        To="LightYellow"/>
+                                                    <ColorAnimation
+                                                        Storyboard.TargetName="gradStop2"
+                                                        Storyboard.TargetProperty="Color"
+                                                        Duration="0:0:0.5"
+                                                        To="LightGreen"/>
+                                                </Storyboard>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
-        
-        <Label Name="chosenUser" Grid.Column="0"/>
 
-        <TextBlock Text="First Name:" Grid.Row="0" />
-        <TextBox x:Name="tbFirstName" Grid.Row="0" Grid.Column="1" Text="{Binding ChosenUser.FirstName}" />
+        <Label
+            Name="chosenUser"
+            Grid.Column="0" />
 
-        <TextBlock Text="Last Name:" Grid.Row="1"/>
-        <TextBox x:Name="tbLastName" Grid.Row="1" Grid.Column="1" Text="{Binding ChosenUser.LastName}"/>
+        <TextBlock
+            Grid.Row="0"
+            Text="First Name:" />
+        <TextBox
+            x:Name="tbFirstName"
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="{Binding ChosenUser.FirstName}" />
 
-        <TextBlock Text="Date of birth:" Grid.Row="2"/>
-        <TextBox x:Name="Age" Grid.Row="2" Grid.Column="1"  Text="{Binding ChosenUser.DateOfBirth, StringFormat=dd-MM-yyyy}" IsEnabled="False"/>
-        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+        <TextBlock
+            Grid.Row="1"
+            Text="Last Name:" />
+        <TextBox
+            x:Name="tbLastName"
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{Binding ChosenUser.LastName}" />
+
+        <TextBlock
+            Grid.Row="2"
+            Text="Date of birth:" />
+        <TextBox
+            x:Name="Age"
+            Grid.Row="2"
+            Grid.Column="1"
+            IsEnabled="False"
+            Text="{Binding ChosenUser.DateOfBirth, StringFormat=dd-MM-yyyy}" />
+        <Grid
+            Grid.Row="3"
+            Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            
-            <Button x:Name="btnCreateUser"
-                    Grid.Column="0" 
-                    Command="{Binding AddRandomNewUser}"
-                    Margin="10,10,5,10">
-                <TextBlock TextWrapping="Wrap" Text="Create random user"/>
+
+            <Button
+                x:Name="btnCreateUser"
+                Grid.Column="0"
+                Margin="10,10,5,10"
+                Command="{Binding AddRandomNewUser}">
+                <TextBlock
+                    Text="Create random user"
+                    TextWrapping="Wrap" />
             </Button>
-            <Button x:Name="btnRemoveUser" 
-                    Content="Remove user"
-                    Margin="5,10"
-                    Grid.Column="1"
-                    Command="{Binding RemoveUser}"/>
-            <Button Grid.Column="2" 
-                    Margin="5,10,10,10" 
-                    Content="Save changes"
-                    Command="{Binding SaveChagnes}"/>
+            <Button
+                x:Name="btnRemoveUser"
+                Grid.Column="1"
+                Margin="5,10"
+                Command="{Binding RemoveUser}"
+                Content="Remove user" />
+            <Button
+                Grid.Column="2"
+                Margin="5,10,10,10"
+                Command="{Binding SaveChagnes}"
+                Content="Save changes" />
         </Grid>
     </Grid>
 </Window>
