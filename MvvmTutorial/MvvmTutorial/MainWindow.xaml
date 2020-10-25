@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MvvmTutorial"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    Title="MVVM sample"
     Width="800"
     Height="450"
     FontSize="20"
@@ -68,8 +68,8 @@
                                 <Grid>
                                     <Grid.Background>
                                         <LinearGradientBrush>
-                                            <GradientStop x:Name="gradStop1" Color="LightYellow"/>
-                                            <GradientStop x:Name="gradStop2" Color="LightGreen" Offset=".8"/>
+                                            <GradientStop x:Name="gradStop1" Color="LightYellow" />
+                                            <GradientStop x:Name="gradStop2" Offset=".8" Color="LightGreen" />
                                         </LinearGradientBrush>
                                     </Grid.Background>
                                     <ContentPresenter />
@@ -80,14 +80,14 @@
                                                     <ColorAnimation
                                                         Storyboard.TargetName="gradStop1"
                                                         Storyboard.TargetProperty="Color"
-                                                        Duration="0:0:0.5"
-                                                        To="Yellow"/>
+                                                        To="Yellow"
+                                                        Duration="0:0:0.5" />
                                                     <DoubleAnimation
+                                                        AutoReverse="True"
                                                         Storyboard.TargetName="gradStop2"
                                                         Storyboard.TargetProperty="Offset"
-                                                        AutoReverse="True"
                                                         To="1"
-                                                        Duration="0:0:0.5"/>
+                                                        Duration="0:0:0.5" />
                                                 </Storyboard>
                                             </VisualState>
                                             <VisualState Name="Normal">
@@ -95,13 +95,13 @@
                                                     <ColorAnimation
                                                         Storyboard.TargetName="gradStop1"
                                                         Storyboard.TargetProperty="Color"
-                                                        Duration="0:0:0.5"
-                                                        To="LightYellow"/>
+                                                        To="LightYellow"
+                                                        Duration="0:0:0.5" />
                                                     <ColorAnimation
                                                         Storyboard.TargetName="gradStop2"
                                                         Storyboard.TargetProperty="Color"
-                                                        Duration="0:0:0.5"
-                                                        To="LightGreen"/>
+                                                        To="LightGreen"
+                                                        Duration="0:0:0.5" />
                                                 </Storyboard>
                                             </VisualState>
                                         </VisualStateGroup>

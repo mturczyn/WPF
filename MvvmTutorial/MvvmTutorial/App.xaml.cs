@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using Microsoft.Practices.ObjectBuilder2;
-using Microsoft.Practices.Unity;
-using MvvmTutorial.DependencyInjection;
+﻿using MvvmTutorial.DependencyInjection;
 using MvvmTutorial.Models;
 using MvvmTutorial.ViewModels;
+using System.Windows;
 
 namespace MvvmTutorial
 {
@@ -22,7 +14,9 @@ namespace MvvmTutorial
         {
             var viewModel = DependencyContainer.RegisterSingletonServiceForViewModel<DataManager, MyViewModel>();
             var window = new MainWindow(viewModel);
+            var samplesWindow = new WpfSamples.WpfSamplesWindow();
             window.Show();
+            samplesWindow.Show();
         }
     }
 }
