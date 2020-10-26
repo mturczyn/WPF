@@ -60,4 +60,46 @@
             </EventTrigger>
         </TextBlock.Triggers>
     </TextBlock>
+    <Button
+        Name="FirstButton"
+        Grid.Row="1"
+        Content="This button will hold to background set by animation"
+        FontSize="20"
+        FontWeight="Bold">
+        <Button.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation
+                            Completed="FirstButtonColorAnimation_Completed"
+                            Storyboard.TargetName="FirstButton"
+                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                            From="Aqua"
+                            To="ForestGreen" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Button.Triggers>
+    </Button>
+    <Button
+        Name="SecondButton"
+        Grid.Row="2"
+        Content="This button WILL NOT hold to background set by animation"
+        FontSize="20"
+        FontWeight="Bold">
+        <Button.Triggers>
+            <EventTrigger RoutedEvent="Button.Click">
+                <BeginStoryboard>
+                    <Storyboard Name="SecondButtonStroyboard">
+                        <ColorAnimation
+                            Completed="SecondButtonColorAnimation_Completed"
+                            Storyboard.TargetName="SecondButton"
+                            Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                            From="Aqua"
+                            To="ForestGreen" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Button.Triggers>
+    </Button>
 </Grid>
